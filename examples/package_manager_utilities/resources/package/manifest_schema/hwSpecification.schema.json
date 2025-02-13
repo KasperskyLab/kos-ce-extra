@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "hwSpecification",
+    "type": "object",
+    "properties":
+    {
+        "arch":
+        {
+            "type": "string"
+        },
+        "cpu":
+        {
+            "type": "string"
+        }
+    },
+    "required":
+    [
+        "arch",
+        "cpu"
+    ],
+    "additionalProperties": false
+}

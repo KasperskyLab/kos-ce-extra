@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Extensions",
+    "type": "object",
+    "description": "Dictionary object with extension-specific data.",
+    "properties": {},
+    "additionalProperties": true,
+    "propertyNames":
+    {
+        "pattern": "^[A-Z_]+_.+"
+    }
+}

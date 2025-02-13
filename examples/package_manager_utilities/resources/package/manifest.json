@@ -1,0 +1,59 @@
+{
+    "version": "2.0",
+    "digestType": "2.16.840.1.101.3.4.2.1",
+    "application":
+    {
+        "id": "__PACKAGE_ID__",
+        "name": "@localizedApplicationName@",
+        "version": "1.0.0",
+        "buildNumber": "1",
+        "systemApplication": false,
+        "description": "@localizedApplicationDescription@"
+    },
+    "platform":
+    {
+        "id": "kos.ce",
+        "sdk":
+        {
+            "buildSdkName": "__SDK_NAME__",
+            "buildSdkVersion": "__SDK_VERSION__",
+            "targetApiLevel": 4
+        },
+        "hwSpecification":
+        {
+            "arch": "__ARCH__",
+            "cpu": ""
+        }
+    },
+    "components":
+    [
+        {
+            "name": "Application",
+            "componentType": "bin",
+            "digest": "__APPLICATION_HASH__"
+        },
+        {
+            "name": "text.txt",
+            "componentType": "res",
+            "digest": "__RESOURCE_HASH__"
+        },
+        {
+            "name": "pkg-locale",
+            "componentType": "manifestLocale",
+            "digest": "__LOCALE_HASH__"
+        }
+    ],
+    "runConfigurations":
+    [
+        {
+            "id": "base",
+            "name": "base",
+            "type": "service",
+            "args": [],
+            "envVariables": [],
+            "primary": true,
+            "eiid": "__APPLICATION_EIID__",
+            "path": "bin/Application"
+        }
+    ]
+}

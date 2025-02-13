@@ -1,0 +1,11 @@
+/*
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+task class client.Client
+
+endpoints
+{
+    notificationImpl : client.Notification
+}

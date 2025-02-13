@@ -1,0 +1,7 @@
+{
+  "locale":
+  {
+    "localizedApplicationName": "Package manager example",
+    "localizedApplicationDescription": "This example show usage of package manager utilities, from package packing to package installing and application run."
+  }
+}

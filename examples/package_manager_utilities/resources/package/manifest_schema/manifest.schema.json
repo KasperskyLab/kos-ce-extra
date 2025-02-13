@@ -1,0 +1,53 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Application manifest",
+    "type": "object",
+    "description": "The root object for an application manifest.",
+    "oneOf":
+    [
+        {
+            "properties":
+            {
+                "version":
+                {
+                    "type": "string"
+                },
+                "digestType":
+                {
+                    "type": "string"
+                },
+                "application":
+                {
+                    "$ref": "application.schema.json"
+                },
+                "platform":
+                {
+                    "$ref": "platform.schema.json"
+                },
+                "components":
+                {
+                    "$ref": "components.schema.json"
+                },
+                "runConfigurations":
+                {
+                    "$ref": "runConfigurations.schema.json"
+                },
+                "privateStorage":
+                {
+                    "$ref": "privateStorage.schema.json"
+                },
+                "extensions":
+                {
+                    "$ref": "extensions.schema.json"
+                }
+            },
+            "required":
+            [
+                "version",
+                "application",
+                "platform"
+            ],
+            "additionalProperties": false
+        }
+    ]
+}

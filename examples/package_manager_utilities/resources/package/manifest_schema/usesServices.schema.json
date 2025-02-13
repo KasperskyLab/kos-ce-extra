@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "usesServices",
+    "type": "array",
+    "items":
+    {
+        "type": "object",
+        "properties":
+        {
+            "name":
+            {
+                "type": "string"
+            },
+            "useType":
+            {
+                "type": "string",
+                "enum":
+                [
+                    "child",
+                    "serviceCanUse",
+                    "serviceActive"
+                ]
+            }
+        },
+        "required":
+        [
+            "name",
+            "useType"
+        ],
+        "additionalProperties": false
+    }
+}

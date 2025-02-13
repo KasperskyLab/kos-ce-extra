@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "PrivateStorage",
+    "type": "object",
+    "properties":
+    {
+        "size":
+        {
+            "type": "string"
+        },
+        "fsType":
+        {
+            "type": "string"
+        }
+    },
+    "required":
+    [
+        "size",
+        "fsType"
+    ],
+    "additionalProperties": false
+}

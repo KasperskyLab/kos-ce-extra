@@ -1,0 +1,20 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: client.Client
+  path: Client
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsRamFs
+  connections:
+  - target: kl.core.NameServer
+    id: NSConnection
+@INIT_Client_ENTITY_CONNECTIONS+@
+
+- name: execution_manager.ExecMgrEntity
+  path: ExecMgrEntity
+@INIT_ExecMgrEntity_ENTITY_CONNECTIONS@
+@INIT_ExecMgrEntity_ENTITY_ENV@
+
+@INIT_EXTERNAL_ENTITIES@

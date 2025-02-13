@@ -1,0 +1,22 @@
+/*
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+package example.Animal
+
+const UInt32 MaxStringSize = 128;
+typedef string<MaxStringSize> String;
+
+typedef SInt32 Retcode;
+
+union Food {
+    UInt16 foodIndex;
+    String foodName;
+}
+
+interface
+{
+    Say (error Retcode status);
+    Eat (in Food food, error Retcode status);
+}

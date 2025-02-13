@@ -1,0 +1,22 @@
+[Server]: Process started
+[Server]: IPC processing started
+[Client]: Process started
+[Client]: ==== Example Animals ====
+[Client]: --------- Say() ---------
+[Server]: Cat Lion: meow
+[Server]: Cat Katty: meow
+[Server]: Dog Collie: wooov
+[Server]: CatDog Dog: wooov
+[Server]: CatDog Cat: meow
+[Server]: Something Thing: Animal not supported
+[Client]: IPC request error: Animal not supported.
+[Client]: --------- Eat() ---------
+[Server]: Cat Katty eats fish
+[Server]: Dog Collie eats meat
+[Server]: CatDog Cat don't want to eat stone: Food not suitable
+[Client]: IPC request error: Food not suitable.
+[Server]: CatDog Dog don't want to eat wood: Food not suitable
+[Client]: IPC request error: Food not suitable.
+[Server]: Something Thing eats spaceship
+[Client]: =========================
+[Client]: SUCCESS

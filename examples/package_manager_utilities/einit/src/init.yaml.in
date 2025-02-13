@@ -1,0 +1,21 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: launcher.Launcher
+  env:
+    VFS_FILESYSTEM_BACKEND: "client:kl.VfsSdCardFs"
+  connections:
+  - target: kl.core.NameServer
+    id: NSConnection
+@INIT_Launcher_ENTITY_CONNECTIONS+@
+
+- name: execution_manager.ExecMgrEntity
+  path: ExecMgrEntity
+  connections:
+@INIT_ExecMgrEntity_ENTITY_CONNECTIONS+@
+  env:
+@INIT_ExecMgrEntity_ENTITY_ENV+@
+
+@INIT_EXTERNAL_ENTITIES@

@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Application",
+    "type": "object",
+    "description": "Application info",
+    "properties":
+    {
+        "id":
+        {
+            "type": "string"
+        },
+        "name":
+        {
+            "type": "string"
+        },
+        "version":
+        {
+            "type": "string"
+        },
+        "buildNumber":
+        {
+            "type": "string"
+        },
+        "systemApplication":
+        {
+            "type": "boolean"
+        },
+        "description":
+        {
+            "type": "string"
+        }
+    },
+    "required":
+    [
+        "id",
+        "name",
+        "version",
+        "buildNumber",
+        "systemApplication"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "Platform",
+    "type": "object",
+    "properties":
+    {
+        "id":
+        {
+            "type": "string"
+        },
+        "sdk":
+        {
+            "$ref": "sdk.schema.json"
+        },
+        "hwSpecification":
+        {
+            "$ref": "hwSpecification.schema.json"
+        }
+    },
+    "required":
+    [
+        "id",
+        "sdk",
+        "hwSpecification"
+    ],
+    "additionalProperties": false
+}

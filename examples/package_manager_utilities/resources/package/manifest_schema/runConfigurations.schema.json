@@ -1,0 +1,65 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "runConfigurations",
+    "type": "array",
+    "items":
+    {
+        "type": "object",
+        "properties":
+        {
+            "id":
+            {
+                "type": "string"
+            },
+            "name":
+            {
+                "type": "string"
+            },
+            "type":
+            {
+                "type": "string"
+            },
+            "args":
+            {
+                "type": "array",
+                "items":
+                {
+                    "type": "string"
+                }
+            },
+            "envVariables":
+            {
+                "$ref": "envVariables.schema.json"
+            },
+            "primary":
+            {
+                "type": "boolean"
+            },
+            "autorun":
+            {
+                "type": "boolean"
+            },
+            "eiid":
+            {
+                "type": "string"
+            },
+            "path":
+            {
+                "type": "string"
+            },
+            "usesServices":
+            {
+                "$ref": "usesServices.schema.json"
+            }
+        },
+        "required":
+        [
+            "id",
+            "name",
+            "type",
+            "primary",
+            "path"
+        ],
+        "additionalProperties": false
+    }
+}

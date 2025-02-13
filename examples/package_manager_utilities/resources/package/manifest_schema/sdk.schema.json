@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "sdk",
+    "type": "object",
+    "properties":
+    {
+        "buildSdkName":
+        {
+            "type": "string"
+        },
+        "buildSdkVersion":
+        {
+            "type": "string"
+        },
+        "targetApiLevel":
+        {
+            "type": "integer"
+        }
+    },
+    "required":
+    [
+        "buildSdkName",
+        "buildSdkVersion",
+        "targetApiLevel"
+    ],
+    "additionalProperties": false
+}

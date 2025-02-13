@@ -1,0 +1,12 @@
+/*
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+component example.CatDog
+
+endpoints
+{
+    cat : example.Animal
+    dog : example.Animal
+}

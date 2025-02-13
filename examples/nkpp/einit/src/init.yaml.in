@@ -1,0 +1,12 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+- name: example.Client
+  connections:
+  - target: example.Server
+    id: server_connection
+
+- name: example.Server
+
+@INIT_EXTERNAL_ENTITIES@
