@@ -1,0 +1,9 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: example.Hello
+@INIT_Hello_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@

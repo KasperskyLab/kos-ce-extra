@@ -1,0 +1,15 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: sequence_example.Writer
+  connections:
+  - target: sequence_example.Reader
+    id: reader_connection
+@INIT_Writer_ENTITY_CONNECTIONS+@
+
+- name: sequence_example.Reader
+@INIT_Reader_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@

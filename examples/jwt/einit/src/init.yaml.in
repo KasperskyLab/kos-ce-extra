@@ -1,0 +1,31 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: jwt_example.WebServer
+  env:
+    VFS_NETWORK_BACKEND: client:kl.VfsNet
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsSdCardFs
+  args:
+    - --cert=/certs/server.crt
+    - --key=/certs/server.key
+    - --dh=/certs/dh4096.pem
+  connections:
+  - target: kl.VfsNet
+    id: kl.VfsNet
+  - target: kl.VfsSdCardFs
+    id: kl.VfsSdCardFs
+  - target: jwt_example.TokenService
+    id: tokenservice
+@INIT_WebServer_ENTITY_CONNECTIONS+@
+
+- name: jwt_example.TokenService
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsSdCardFs
+  connections:
+  - target: kl.VfsSdCardFs
+    id: kl.VfsSdCardFs
+@INIT_TokenService_ENTITY_CONNECTIONS+@
+
+@INIT_EXTERNAL_ENTITIES@

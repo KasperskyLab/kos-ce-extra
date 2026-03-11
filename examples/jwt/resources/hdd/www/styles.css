@@ -1,0 +1,66 @@
+/*
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+Body {
+  font-family: Calibri, Helvetica, sans-serif;
+}
+
+input[type=button] {
+    background-color: darkblue;
+    color: magenta;
+    padding: 15px;
+    margin: 10px auto;
+    display: block;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+}
+
+input[type=button]:disabled {
+    background-color: gray;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 2px solid green;
+    box-sizing: border-box;
+}
+
+button:hover, input[type=button]:hover {
+    opacity: 0.7;
+}
+
+.container {
+    width: 75%;
+    padding: 25px;
+    margin: auto;
+    background-color: lightblue;
+    border: 3px solid #f1f1f1;
+}
+
+.error, .success {
+    width: 80%;
+    padding: 25px;
+    margin: auto;
+    border: 1px solid #f1f1f1;
+    font-size: 18pt;
+    font-weight: bold;
+    color: white;
+}
+
+.error {
+    background-color: #FF5555;
+}
+
+.success {
+    background-color: #55FF55;
+}
+
+.label {
+    width: 100%;
+}

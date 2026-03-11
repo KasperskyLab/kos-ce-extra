@@ -1,0 +1,17 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: iperf.Server
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsNet
+    VFS_NETWORK_BACKEND:    client:kl.VfsNet
+  args:
+    - -sV4
+  connections:
+  - target: kl.VfsNet
+    id:     kl.VfsNet
+@INIT_Server_ENTITY_CONNECTIONS+@
+
+@INIT_EXTERNAL_ENTITIES@

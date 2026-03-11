@@ -1,0 +1,20 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+/* Package with the "sequence_example.SequenceLogging" interface declaration. */
+
+package sequence_example.SequenceLogging
+
+const UInt32 MinSequenceLength                  = 1;
+const UInt32 MaxSequenceLength                  = 10;
+const UInt32 MaxSecurityGrantedSequenceLength   = 7;
+
+typedef sequence<UInt32,MaxSequenceLength> Seq;
+
+interface 
+{
+    /* Interface of the LogSequence method. */
+    LogSequence(in Seq result);
+}

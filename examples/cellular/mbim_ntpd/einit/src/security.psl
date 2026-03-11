@@ -1,0 +1,95 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+/* Description of a solution security policy. */
+
+/* Include the base.psl file containing a formal description of the Base security model. */
+use nk.base._
+
+/* Include EDL files. */
+use EDL Einit
+use EDL kl.core.Core
+use EDL mbim_ntpd.Client
+
+use kl.Ntpd._
+use kl.VfsNet._
+use kl.EntropyEntity._
+use kl.drivers.DNetSrv._
+use kl.drivers.DNetSrvMbim._
+use kl.drivers.USB._
+use kl.core.DCM._
+
+{% if BOARD == "RPI4_BCM2711" %}
+use kl.drivers.PCIE._
+use kl.drivers.Bcm2711MboxArmToVc._
+{% elif BOARD == "RADXA_ROCK_3A" %}
+use kl.drivers.BSP._
+use kl.drivers.GPIO._
+use kl.drivers.PinCtrl._
+{% endif %}
+
+/* Assign the execute interface. */
+execute: kl.core.Execute
+
+execute {
+    /* The KasperskyOS kernel is allowed to start itself and the Einit class process. */
+    match src = kl.core.Core {
+        match dst = kl.core.Core                    { grant () }
+        match dst = Einit                           { grant () }
+    }
+
+    /* The Einit class process is allowed to start specific processes. */
+    match src = Einit {
+        match dst = kl.Ntpd                         { grant () }
+        match dst = kl.VfsNet                       { grant () }
+        match dst = kl.EntropyEntity                { grant () }
+        match dst = kl.drivers.DNetSrvMbim          { grant () }
+        match dst = kl.drivers.USB                  { grant () }
+        match dst = kl.core.DCM                     { grant () }
+
+{% if BOARD == "RPI4_BCM2711" %}
+        match dst = kl.drivers.PCIE                 { grant () }
+        match dst = kl.drivers.Bcm2711MboxArmToVc   { grant () }
+{% elif BOARD == "RADXA_ROCK_3A" %}
+        match dst = kl.drivers.BSP                  { grant () }
+        match dst = kl.drivers.GPIO                 { grant () }
+        match dst = kl.drivers.PinCtrl              { grant () }
+{% endif %}
+
+        match dst = mbim_ntpd.Client                { grant () }
+    }
+}
+
+request {
+    /* The specified clients are allowed to query the KasperskyOS kernel. */
+    match dst = kl.core.Core {
+        match src = Einit                           { grant () }
+        match src = mbim_ntpd.Client                { grant () }
+    }
+
+
+    /* The specified clients are allowed to query a server of the kl.VfsNet class. */
+    match dst = kl.VfsNet {
+        match src = kl.Ntpd                         { grant () }
+        match src = mbim_ntpd.Client                { grant () }
+    }
+
+    /* A client of the kl.VfsNet class is allowed to query a server of the kl.drivers.DNetSrvMbim
+     * class. */
+    match dst = kl.drivers.DNetSrvMbim {
+        match src = kl.VfsNet                       { grant () }
+    }
+}
+
+/* Any server and the KasperskyOS kernel are allowed to respond to queries of any client. */
+response {
+    grant ()
+}
+
+/* Any server and the KasperskyOS kernel are allowed to notify any client regarding errors that
+ * occur when the client queries the server or the kernel by calling any method. */
+error {
+    grant ()
+}

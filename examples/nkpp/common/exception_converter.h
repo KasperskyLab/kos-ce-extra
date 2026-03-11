@@ -1,7 +1,5 @@
-/*
- * © 2025 AO Kaspersky Lab
- * Licensed under the MIT License
- */
+// © 2025 AO Kaspersky Lab
+// Licensed under the MIT License
 
 #pragma once
 
@@ -15,9 +13,9 @@
 #include <common/errors.h>
 #include <common/log.h>
 
-namespace err          {
+namespace err {
 
-class RetcodeExceptionConverter : public kosipc::IRetcodeExceptionConverter
+class RetcodeExceptionConverter: public kosipc::IRetcodeExceptionConverter
 {
     void CatchException(Retcode& rc) override
     {

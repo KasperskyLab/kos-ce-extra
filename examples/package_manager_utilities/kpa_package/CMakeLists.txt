@@ -1,8 +1,6 @@
 # © 2025 AO Kaspersky Lab
 # Licensed under the MIT License
 
-project (kpa_package)
-
 if (NOT DEFINED PACKAGE_ID OR ${PACKAGE_ID} STREQUAL "")
     message (FATAL_ERROR "PACKAGE_ID (ID of the installed KPA package) is empty! Set it in the CMakeLists.txt root file.")
 endif ()
@@ -10,7 +8,7 @@ if (NOT DEFINED APP_INSTALL_DIR OR ${APP_INSTALL_DIR} STREQUAL "")
     message (FATAL_ERROR "APP_INSTALL_DIR (path where KPA packages are installed) is empty! Set it in the CMakeLists.txt root file.")
 endif ()
 
-# Set variable values for executable file names of CAS tools for management KPA packages.
+# Set variable values for executable file names of CAS tools used for managing KPA packages.
 set (CAS_PACK_CMD    ${KL_SDK_ROOT_PATH}/toolchain/bin/cas-pack)
 set (CAS_INSPECT_CMD ${KL_SDK_ROOT_PATH}/toolchain/bin/cas-inspect)
 set (CAS_PM_CMD      ${KL_SDK_ROOT_PATH}/toolchain/bin/cas-pm)
@@ -30,9 +28,11 @@ string (REPLACE "-${SDK_VERSION}" "" SDK_NAME ${SDK_BASENAME})
 set (ARCH ${CMAKE_SYSTEM_PROCESSOR})
 
 # Get the Application program EIID to fill the KPA package manifest.
-file (STRINGS ${RESOURCES}/edl/Application.edl EIID_LINE REGEX "task class +[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*")
+file (STRINGS ${NK_RESOURCES}/application/Application.edl EIID_LINE REGEX "task class +[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*")
 string (REGEX REPLACE "task class" "" APPLICATION_EIID ${EIID_LINE})
 string (STRIP ${APPLICATION_EIID} APPLICATION_EIID)
+
+set (APP_DATA_FILE "/${APP_INSTALL_DIR}/${PACKAGE_ID}/v${PACKAGE_VERSION}/res/text.txt")
 
 # Set the variable values for the files needed for packing and installing of the KPA package.
 set (SOURCE_KPA_FILES
@@ -47,9 +47,9 @@ set (KPA_FILES
      ${PKG_DIR}/files/pkg-locale)
 set (INSTALLED_KPA_FILES
      ${ROOTFS_DIR}/${APP_INSTALL_DIR}/${PACKAGE_ID}/bin/Application
-     ${ROOTFS_DIR}/${APP_INSTALL_DIR}/${PACKAGE_ID}/res/text.txt
+     ${ROOTFS_DIR}${APP_DATA_FILE}
      ${ROOTFS_DIR}/${APP_INSTALL_DIR}/${PACKAGE_ID}/manifestLocale/pkg-locale
-     ${ROOTFS_DIR}/repository.sqlite)
+     ${ROOTFS_DIR}${PKG_DB_PATH})
 
 # Copy the source files of the KPA package to one build directory.
 add_custom_command (OUTPUT  ${KPA_FILES}
@@ -65,6 +65,8 @@ add_custom_target (prepare_kpa_package_manifest
                    DEPENDS ${PKG_DIR}/manifest.json
                    COMMAND sed
                            -e s/__PACKAGE_ID__/${PACKAGE_ID}/
+                           -e s/__PACKAGE_VERSION__/${PACKAGE_VERSION}/
+                           -e s!__APP_DATA_FILE__!${APP_DATA_FILE}!
                            -e s/__SDK_NAME__/${SDK_NAME}/
                            -e s/__SDK_VERSION__/${SDK_VERSION}/
                            -e s/__ARCH__/${ARCH}/
@@ -102,7 +104,7 @@ add_custom_command (OUTPUT  ${INSTALLED_KPA_FILES}
                             --pkgsdir   ${PKG_DIR}
                             --reinstall
                             -vvv
-                            --dbpath    ${ROOTFS_DIR}/repository.sqlite
+                            --dbpath    ${ROOTFS_DIR}${PKG_DB_PATH}
                             --appsdir   ${ROOTFS_DIR}/${APP_INSTALL_DIR}
                             --extension ${PKG_EXT}
                             ${PKG_NAME})

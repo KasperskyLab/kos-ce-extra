@@ -1,0 +1,47 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+/* This file describes programs need to dynamic linking works. */
+
+/* Including EDL files. */
+use kl.drivers.BSP._
+use kl.drivers.SDCard._
+use kl.EntropyEntity._
+use kl.VfsSdCardFs._
+use kl.bc.BlobContainer._
+
+{% if BOARD == "RPI4_BCM2711" %}
+/* Required by BSP for BCM2711. */
+use kl.drivers.Bcm2711MboxArmToVc._
+{% elif BOARD == "RADXA_ROCK_3A" %}
+/* Required by SDCard driver for Radxa ROCK 3A. */
+use kl.drivers.PinCtrl._
+use kl.drivers.GPIO._
+{% endif %}
+
+/* Allows the Einit class process to run specific processes. */
+execute src = Einit {
+{% if BOARD == "RPI4_BCM2711" %}
+    match dst = kl.drivers.Bcm2711MboxArmToVc { grant () }
+{% elif BOARD == "RADXA_ROCK_3A" %}
+    match dst = kl.drivers.GPIO { grant () }
+    match dst = kl.drivers.PinCtrl { grant () }
+{% endif %}
+    match dst = kl.drivers.BSP { grant () }
+    match dst = kl.drivers.SDCard { grant () }
+    match dst = kl.EntropyEntity { grant () }
+    match dst = kl.VfsSdCardFs { grant () }
+    match dst = kl.bc.BlobContainer { grant () }
+}
+
+request {
+    /* Allows process with the kl.VfsSdCardFs class to receive request
+       from the process with the kl.bc.BlobContainer class. */
+    match dst = kl.VfsSdCardFs {
+        match src = kl.bc.BlobContainer { grant () }
+    }
+    /* Allows process with the kl.bc.BlobContainer class to receive request from any processes. */
+    match dst = kl.bc.BlobContainer { grant () }
+}

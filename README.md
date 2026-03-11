@@ -1,34 +1,85 @@
 # Extra examples for KasperskyOS Community Edition
 
-This repository contains C++ examples of KasperskyOS-based solutions. These examples are designed
+This repository contains C/C++ examples of KasperskyOS-based solutions. These examples are designed
 to help developers understand and implement different KasperskyOS features in their projects.
 For additional details on KasperskyOS, including its limitations and known issues, please refer to the
-[KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.3&customization=KCE&helpid=community_edition).
-Three examples are presented in the repository:
+[KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.2&customization=KCE_community_edition).
 
-* [Using the `nkppmeta` compiler](examples/nkpp/README.md). The `nkppmeta` compiler lets you
-generate transport C++ proxy objects and stubs for use by both a client and a server.
-* [Working with the ExecutionManager component](examples/execution_manager_separated_vfs/README.md).
-The ExecutionManager component provides a C++ interface for creating, starting and stopping
-processes in KasperskyOS-based solutions.
-* [Using tools to manage software packages](examples/package_manager_utilities/README.md). The
-KasperskyOS Community Edition SDK is delivered with three tools: `cas-inspect`, `cas-pm`, and
-`cas-pack`. These tools allow you to manage packages in proprietary KPA format: get information
-about package, pack source files into package, and install packages.
+## System components and IPC
+
+* [Using IPC return and error handling](examples/errors_via_ipc/README.md)
+* [Using the ExecutionManager component](examples/execution_manager_separated_vfs/README.md)
+* [Using the nkppmeta compiler](examples/nkpp/README.md)
+* [Using the PackageManager component](examples/package_manager_utilities/README.md)
+* [Using IPC with a sequence parameter type](examples/sequence/README.md)
+
+## Hardware and drivers
+
+* [Using MBIM network driver for internet access](examples/cellular/mbim_ntpd/README.md)
+* [Using MBIM network driver for sending SMS](examples/cellular/mbim_sms/README.md)
+* [Using USB UVC camera to capture images](examples/uvc_camera_stills/README.md)
+
+## Network and connectivity
+
+* [Using the wpa_supplicant client library](examples/wifi/wpa_supplicant_client/README.md)
+* [Using the iperf application in combination with the wpa_supplicant client library](examples/wifi/iperf_wifi/README.md)
+
+## External library integrations
+
+* [Using the KasperskyOS-adapted CPP-JWT library to generate a token](examples/jwt/README.md)
+* [Using the KasperskyOS-adapted Abseil library to integrate foundational C++ components](examples/abseil/README.md)
+* [Using the KasperskyOS-adapted RabbitMQ-C library to implement AMQP consumer application](examples/rabbitmq/amqp_consumer/README.md)
+* [Using the KasperskyOS-adapted RabbitMQ-C library to implement AMQP publisher application](examples/rabbitmq/amqp_publisher/README.md)
+* [Using the KasperskyOS-adapted gRPC library to implement cross-platform client-server communication](examples/grpc/README.md)
+* [Using the KasperskyOS-adapted BoringSSL library to implement cryptographic operations](examples/boringssl/README.md)
+* [Using the KasperskyOS-adapted c-ares library to implement asynchronous DNS resolution](examples/c-ares/README.md)
+* [Using the KasperskyOS-adapted protobuf library to implement structured data exchange via IPC](examples/protobuf/README.md)
 
 # Trademarks
 
 Registered trademarks and endpoint marks are the property of their respective owners.
 
+Apache is either a registered trademark or a trademark of the Apache Software Foundation in the
+United States and/or other countries.
+
+Arm is a registered trademark of Arm Limited (or its subsidiaries) in the US and/or elsewhere.
+
+Apple, Mac are trademarks of Apple Inc.
+
+Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United
+States and/or other countries. Docker, Inc. and other parties may also have trademark rights in
+other terms used herein.
+
+GITHUB is a trademark of GitHub, Inc., registered in the United States and other countries.
+
+Google, PROTOBUF are trademarks of Google LLC.
+
+GRPC is a registered trademark of The Linux Foundation in the United States and other countries.
+
+Java, JavaScript are registered trademarks of Oracle and/or its affiliates.
+
+Linux is the registered trademark of Linus Torvalds in the U.S. and other countries.
+
+Microsoft is a trademark of the Microsoft group of companies.
+
+OpenSSL is a trademark owned by the OpenSSL Software Foundation.
+
+BoringSSL adaptation for KasperskyOS is not affiliated with OpenSSL.
+
+QT is a trademark or registered trademark of The Qt Company Ltd.
+
+RabbitMQ is a trademark of Broadcom, Inc. in the U.S. and other countries.
+
 Raspberry Pi is a trademark of the Raspberry Pi Foundation.
 
 # Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions on code contribution.
+Only KasperskyOS-specific changes can be approved. See [CONTRIBUTING.md](CONTRIBUTING.md) for
+detailed instructions on code contribution.
 
 # Licensing
 
 This project is licensed under the terms of the MIT license. See [LICENSE](LICENSE) for more
 information.
 
-© 2025 AO Kaspersky Lab
+© 2026 AO Kaspersky Lab

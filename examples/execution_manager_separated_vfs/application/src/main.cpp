@@ -1,7 +1,5 @@
-/*
- * © 2025 AO Kaspersky Lab
- * Licensed under the MIT License
- */
+// © 2025 AO Kaspersky Lab
+// Licensed under the MIT License
 
 #include <cstdlib>
 #include <iostream>
@@ -25,11 +23,11 @@ const char Tag[] = "[Application]";
 static Retcode SendNotificationToClient()
 {
     NsHandle ns;
-    char server[kl_core_Types_UCoreStringSize];
-    char service[kl_core_Types_UCoreStringSize];
+    char     server[kl_core_Types_UCoreStringSize];
+    char     service[kl_core_Types_UCoreStringSize];
 
 
-    Retcode rc = NsCreate(RTL_NULL, INFINITE_TIMEOUT, &ns);
+    Retcode rc = NsCreate(NULL, INFINITE_TIMEOUT, &ns);
     if (rc != rcOk)
     {
         return rc;
@@ -48,8 +46,8 @@ static Retcode SendNotificationToClient()
         return rc;
     }
 
-    Handle       handle;
-    rtl_uint32_t rsid;
+    Handle   handle;
+    uint32_t rsid;
 
     rc = KnCmConnect(server, service, INFINITE_TIMEOUT, &handle, &rsid);
     if (rc != rcOk)
@@ -73,48 +71,54 @@ static Retcode SendNotificationToClient()
 int main(int argc, const char *argv[], const char *envs[])
 {
     std::string idx = "";
-    char buf[TASK_NAME_LEN];
-    Retcode rc = KnTaskGetName(buf, TASK_NAME_LEN);
+    char        buf[TASK_NAME_LEN];
+    Retcode     rc = KnTaskGetName(buf, TASK_NAME_LEN);
 
-    if (argc > 1) {
+    if (argc > 1)
+    {
         idx = argv[1];
     }
-    std::cout << Tag << ": " << "application" << idx << " started\n";
+    std::cout << Tag << ": "
+              << "application" << idx << " started\n";
 
     if (rc != rcOk)
     {
-        std::cerr << Tag << ": " << "Failed to get Task name, error code " << rc << '\n';
+        std::cerr << Tag << ": "
+                  << "Failed to get Task name, error code " << rc << '\n';
         return rc;
     }
 
-    std::cout << Tag << ": " << "ARGS: ";
+    std::cout << Tag << ": "
+              << "ARGS: ";
     for (int i = 0; i < argc; ++i)
     {
         std::cout << argv[i] << ", ";
     }
 
-    std::cout << "\n" << Tag << ": " << "ENVS: ";
+    std::cout << "\n"
+              << Tag << ": "
+              << "ENVS: ";
     for (const char **env = envs; *env != 0; ++env)
     {
         std::cout << *env << ", ";
     }
     std::cout << "\n";
 
-    /* We notify the client who launched this application that all the work is done. */
+    // We notify the client who launched this application that all the work is done.
     rc = SendNotificationToClient();
     if (rc != rcOk)
     {
-        std::cerr << Tag << ": " << "Failed to notify client, error code " << rc << '\n';
+        std::cerr << Tag << ": "
+                  << "Failed to notify client, error code " << rc << '\n';
         return rc;
     }
 
-    /*
-     * We do not terminate the application ourselves, but wait for the client
-     * to send a request to the ExecutionManager component to stop the application.
-     */
+    // We do not terminate the application ourselves, but wait for the client
+    // to send a request to the ExecutionManager component to stop the application.
     while (true)
     {
-        std::cout << Tag << ": " << "Task with name = " << buf << " is still alive...\n";
+        std::cout << Tag << ": "
+                  << "Task with name = " << buf << " is still alive...\n";
         sleep(20);
     }
 

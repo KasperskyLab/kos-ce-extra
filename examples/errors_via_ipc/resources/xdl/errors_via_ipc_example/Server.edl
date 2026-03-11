@@ -1,0 +1,11 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+task class errors_via_ipc_example.Server
+
+endpoints 
+{
+    log : errors_via_ipc_example.NumberSummation
+}

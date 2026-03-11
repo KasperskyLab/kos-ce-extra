@@ -1,0 +1,36 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- task: errors_via_ipc_example.ClientC
+  name: errors_via_ipc_example.Client
+  path: ClientC
+  connections:
+  - target: errors_via_ipc_example.ServerC
+    id: server1_connection
+  - target: errors_via_ipc_example.ServerCXX
+    id: server2_connection
+@INIT_ClientC_ENTITY_CONNECTIONS+@
+
+- task: errors_via_ipc_example.ServerC
+  name: errors_via_ipc_example.Server
+  path: ServerC
+@INIT_ServerC_ENTITY_CONNECTIONS@
+
+- task: errors_via_ipc_example.ClientCXX
+  name: errors_via_ipc_example.Client
+  path: ClientCXX
+  connections:
+  - target: errors_via_ipc_example.ServerC
+    id: server1_connection
+  - target: errors_via_ipc_example.ServerCXX
+    id: server2_connection
+@INIT_ClientCXX_ENTITY_CONNECTIONS+@
+
+- task: errors_via_ipc_example.ServerCXX
+  name: errors_via_ipc_example.Server
+  path: ServerCXX
+@INIT_ServerCXX_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@

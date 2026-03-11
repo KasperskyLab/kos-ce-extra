@@ -1,0 +1,126 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+/* Description of a solution security policy for the `execution_manager_separated_vfs` example. */
+
+/* Include the base.psl file containing a formal description of the Base security model. */
+use nk.base._
+
+/* Include EDL files. */
+use EDL kl.core.Core
+use EDL Einit
+use EDL client.Client
+use EDL application.Application
+
+use execution_manager.ExecMgrEntity._
+use kl.core.NameServer._
+use kl.VfsSdCardFs._
+use kl.bc.BlobContainer._
+use kl.core.DCM._
+use kl.drivers.SDCard._
+use kl.drivers.BSP._
+{% if BOARD == "RPI4_BCM2711" %}
+use kl.drivers.Bcm2711MboxArmToVc._
+{% elif BOARD == "RADXA_ROCK_3A" %}
+use kl.drivers.PinCtrl._
+use kl.drivers.GPIO._
+{% endif %}
+use kl.EntropyEntity._
+
+/* Assign the execute interface. */
+execute: kl.core.Execute
+
+execute {
+    /* The KasperskyOS kernel is allowed to start itself and the Einit class process. */
+    match src = kl.core.Core {
+        match dst = kl.core.Core                    { grant () }
+        match dst = Einit                           { grant () }
+    }
+
+     /* The Einit class process is allowed to start specific processes. */
+    match src = Einit {
+{% if BOARD == "RPI4_BCM2711" %}
+        match dst = kl.drivers.Bcm2711MboxArmToVc   { grant () }
+{% elif BOARD == "RADXA_ROCK_3A" %}
+        match dst = kl.drivers.PinCtrl              { grant () }
+        match dst = kl.drivers.GPIO                 { grant () }
+{% endif %}
+        match dst = kl.drivers.BSP                  { grant () }
+        match dst = kl.drivers.SDCard               { grant () }
+        match dst = client.Client                   { grant () }
+        match dst = execution_manager.ExecMgrEntity { grant () }
+        match dst = kl.core.NameServer              { grant () }
+        match dst = kl.VfsSdCardFs                  { grant () }
+        match dst = kl.bc.BlobContainer             { grant () }
+        match dst = kl.core.DCM                     { grant () }
+        match dst = kl.EntropyEntity                { grant () }
+    }
+
+    /* The execution_manager.ExecMgrEntity class process is allowed to start
+       the application.Application class process. */
+    match src = execution_manager.ExecMgrEntity {
+        match dst = application.Application         { grant () }
+    }
+}
+
+request {
+    /* The specified clients are allowed to query the KasperskyOS kernel. */
+    match dst = kl.core.Core {
+        match src = Einit                           { grant () }
+        match src = client.Client                   { grant () }
+        match src = execution_manager.ExecMgrEntity { grant () }
+        match src = application.Application         { grant () }
+    }
+
+    /* The specified clients are allowed to query a server of the kl.core.DCM class. */
+    match dst = kl.core.DCM {
+        match src = execution_manager.ExecMgrEntity { grant () }
+        match src = client.Client                   { grant () }
+        match src = application.Application         { grant () }
+    }
+
+    match dst = kl.bc.BlobContainer {
+        match src = Einit                           { grant () }
+        match src = client.Client                   { grant () }
+        match src = execution_manager.ExecMgrEntity { grant () }
+        match src = application.Application         { grant () }
+    }
+
+    match dst = kl.VfsSdCardFs {
+        match src = kl.bc.BlobContainer             { grant () }
+        match src = kl.core.NameServer              { grant () }
+        match src = execution_manager.ExecMgrEntity { grant () }
+        match src = client.Client                   { grant () }
+        match src = application.Application         { grant () }
+    }
+
+    match dst = kl.core.NameServer {
+        match src = execution_manager.ExecMgrEntity { grant () }
+        match src = kl.VfsSdCardFs                  { grant () }
+        match src = client.Client                   { grant () }
+        match src = application.Application         { grant () }
+    }
+
+    /* A client of the client.Client class is allowed to query
+       a server of the execution_manager.ExecMgrEntity class. */
+    match dst = execution_manager.ExecMgrEntity {
+        match src = client.Client                   { grant () }
+    }
+
+    match dst = client.Client {
+        match src = application.Application         { grant () }
+    }
+}
+
+/* Any server and the KasperskyOS kernel are allowed to respond to queries of any client. */
+response {
+    grant ()
+}
+
+/* Any server and the KasperskyOS kernel are allowed to notify any client regarding errors that
+ * occur when the client queries the server or the kernel by calling any method. */
+error {
+    grant ()
+}

@@ -6,7 +6,7 @@ entities:
 - name: client.Client
   path: Client
   env:
-    VFS_FILESYSTEM_BACKEND: client:kl.VfsRamFs
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsSdCardFs
   connections:
   - target: kl.core.NameServer
     id: NSConnection

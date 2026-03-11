@@ -1,0 +1,21 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: protobuf_example.Consumer
+@INIT_Consumer_ENTITY_CONNECTIONS@
+
+- name: protobuf_example.Producer
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsSdCardFs
+  args:
+    - /address_book.json
+  connections:
+  - target: kl.VfsSdCardFs
+    id: kl.VfsSdCardFs
+  - target: protobuf_example.Consumer
+    id: message_consumer
+@INIT_Producer_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@
