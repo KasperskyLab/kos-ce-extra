@@ -5,7 +5,7 @@
     {
         "id": "__PACKAGE_ID__",
         "name": "@localizedApplicationName@",
-        "version": "1.0.0",
+        "version": "__PACKAGE_VERSION__",
         "buildNumber": "1",
         "systemApplication": false,
         "description": "@localizedApplicationDescription@"
@@ -49,8 +49,10 @@
             "id": "base",
             "name": "base",
             "type": "service",
-            "args": [],
-            "envVariables": [],
+            "args": [ "__APP_DATA_FILE__" ],
+            "envVariables": [
+                { "name": "VFS_FILESYSTEM_BACKEND", "value": "client:kl.VfsSdCardFs" }
+            ],
             "primary": true,
             "eiid": "__APPLICATION_EIID__",
             "path": "bin/Application"

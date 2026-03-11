@@ -1,7 +1,5 @@
-/*
- * © 2025 AO Kaspersky Lab
- * Licensed under the MIT License
- */
+// © 2025 AO Kaspersky Lab
+// Licensed under the MIT License
 
 #include <iostream>
 #include <vector>
@@ -12,7 +10,7 @@
 
 #include <common/exception_converter.h>
 
-/* Generated headers. */
+// Generated headers.
 #include <example/Client.edl.cpp.h>
 #include <example/Animal.idl.cpp.h>
 
@@ -26,21 +24,22 @@ using namespace example;
 
 void ExampleAnimals(kosipc::Application& app)
 {
-    auto lion       = app.MakeProxy<Animal>(
-                          kosipc::ConnectStaticChannel(ServerChannelName, "lion.animal"));
-    auto cat        = app.MakeProxy<Animal>(
-                          kosipc::ConnectStaticChannel(ServerChannelName, "domestic.animal"));
-    auto dog        = app.MakeProxy<Animal>(
-                          kosipc::ConnectStaticChannel(ServerChannelName, "collie.animal"));
-    auto catdog_cat = app.MakeProxy<Animal>(
-                          kosipc::ConnectStaticChannel(ServerChannelName, "catdog.cat"));
-    auto catdog_dog = app.MakeProxy<Animal>(
-                          kosipc::ConnectStaticChannel(ServerChannelName, "catdog.dog"));
-    auto something  = app.MakeProxy<Animal>(
-                          kosipc::ConnectStaticChannel(ServerChannelName, "something.animal"));
+    auto lion =
+        app.MakeProxy<Animal>(kosipc::ConnectStaticChannel(ServerChannelName, "lion.animal"));
+    auto cat =
+        app.MakeProxy<Animal>(kosipc::ConnectStaticChannel(ServerChannelName, "domestic.animal"));
+    auto dog =
+        app.MakeProxy<Animal>(kosipc::ConnectStaticChannel(ServerChannelName, "collie.animal"));
+    auto catdog_cat =
+        app.MakeProxy<Animal>(kosipc::ConnectStaticChannel(ServerChannelName, "catdog.cat"));
+    auto catdog_dog =
+        app.MakeProxy<Animal>(kosipc::ConnectStaticChannel(ServerChannelName, "catdog.dog"));
+    auto something =
+        app.MakeProxy<Animal>(kosipc::ConnectStaticChannel(ServerChannelName, "something.animal"));
 
     std::cerr << Tag << ": --------- Say() ---------\n";
 
+    // clang-format off
     const std::array<Animal *, 6> talkingAnimals = {
         lion.get(),
         cat.get(),
@@ -49,6 +48,7 @@ void ExampleAnimals(kosipc::Application& app)
         catdog_cat.get(),
         something.get()
     };
+    // clang-format on
 
     for (auto animal : talkingAnimals)
     {
@@ -64,19 +64,19 @@ void ExampleAnimals(kosipc::Application& app)
 
     std::cerr << Tag << ": --------- Eat() ---------\n";
 
-    const std::vector<std::pair<Animal *, Food>> eatingAnimalsAndFood = {
-        {cat.get(), food::Fish.data()},
-        {dog.get(), static_cast<unsigned short>(1)},
-        {catdog_cat.get(), food::KnownFood.back().data()},
-        {catdog_dog.get(), static_cast<unsigned short>(food::KnownFood.size()-2)},
-        {something.get(), "spaceship"}
+    const std::vector<std::pair<Animal*, Food>> eatingAnimalsAndFood = {
+        {cat.get(),        food::Fish.data()                                      },
+        {dog.get(),        static_cast<unsigned short>(1)                         },
+        {catdog_cat.get(), food::KnownFood.back().data()                          },
+        {catdog_dog.get(), static_cast<unsigned short>(food::KnownFood.size() - 2)},
+        {something.get(),  "spaceship"                                            }
     };
 
-    for (auto & [animal, food] : eatingAnimalsAndFood)
+    for (auto& [animal, food] : eatingAnimalsAndFood)
     {
         try
         {
-           animal->Eat(food);
+            animal->Eat(food);
         }
         catch (const err::exception::FoodNotSuitable& e)
         {
@@ -85,9 +85,9 @@ void ExampleAnimals(kosipc::Application& app)
     }
 }
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] const char *argv[])
+int main([[maybe_unused]] int argc, [[maybe_unused]] const char* argv[])
 {
-    /* Create Application object. */
+    // Create Application object.
     kosipc::ApplicationSettings as;
     as.SetRetcodeExceptionConverter(std::make_shared<err::RetcodeExceptionConverter>());
     kosipc::Application app = kosipc::MakeApplicationAutodetect(as);

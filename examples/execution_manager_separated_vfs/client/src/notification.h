@@ -1,7 +1,5 @@
-/*
- * © 2025 AO Kaspersky Lab
- * Licensed under the MIT License
- */
+// © 2025 AO Kaspersky Lab
+// Licensed under the MIT License
 
 #ifndef EXECUTION_MANAGER_NOTIFICATION_H
 #define EXECUTION_MANAGER_NOTIFICATION_H

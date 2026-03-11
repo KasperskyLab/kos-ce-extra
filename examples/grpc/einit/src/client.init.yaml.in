@@ -1,0 +1,30 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: helloworld.GreeterClient
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsSdCardFs
+    VFS_NETWORK_BACKEND: client:kl.VfsNet
+  connections:
+  - target: kl.VfsSdCardFs
+    id: kl.VfsSdCardFs
+  - target: kl.VfsNet
+    id: kl.VfsNet
+@INIT_GreeterClient_ENTITY_CONNECTIONS@
+@INIT_GreeterClient_ENTITY_ARGS@
+
+- name: kl.Ntpd
+  path: ntpd
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsSdCardFs
+    VFS_NETWORK_BACKEND: client:kl.VfsNet
+  connections:
+  - target: kl.VfsSdCardFs
+    id: kl.VfsSdCardFs
+  - target: kl.VfsNet
+    id: kl.VfsNet
+@INIT_ntpd_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@

@@ -1,0 +1,17 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+package jwt_example.IToken
+
+import kl.core.Types
+
+const UInt32 MaxTokenSize = 5120;
+typedef string<MaxTokenSize> Token;
+
+interface
+{
+    Generate(out Token token);
+    Verify(in Token token, out Boolean result);
+}

@@ -1,0 +1,14 @@
+/*
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+package protobuf_example.IConsumer
+
+const UInt16 MaxMessageSize = 1024;
+typedef sequence<SInt8, MaxMessageSize> Message;
+
+interface
+{
+    Consume(in Message message);
+}

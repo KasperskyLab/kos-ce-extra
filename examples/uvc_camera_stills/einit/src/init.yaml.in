@@ -1,0 +1,11 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: uvc_camera_stills.Client
+@INIT_Client_ENTITY_ARGS@
+@INIT_Client_ENTITY_ENV@
+@INIT_Client_ENTITY_CONNECTIONS@
+
+@INIT_EXTERNAL_ENTITIES@

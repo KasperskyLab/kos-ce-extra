@@ -1,0 +1,57 @@
+<!--
+© 2025 AO Kaspersky Lab
+Licensed under the MIT License
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Test Access data page </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<script type="text/javascript">
+
+function onGetData() {
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+       document.getElementById("jwtButton").disabled=false;
+       document.getElementById("data").innerHTML = this.responseText;
+    }
+
+    xhttp.open("GET", "/getdata?jwt=" + document.getElementById("JWT").value, true);
+    xhttp.send();
+}
+
+function onGetJWT() {
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+       document.getElementById("jwtButton").disabled=false;
+       document.getElementById("JWT").value = this.responseText;
+    }
+
+    xhttp.open("GET", "/gettoken?jwt=" + document.getElementById("JWT").value, true);
+    xhttp.send();
+}
+
+
+</script>
+<body>
+    <center> <h1>Test Access data page</h1> </center>
+    <div class="container">
+        <input type="button" value="Get Data" onclick="onGetData()">
+    </div>
+    <div class="container">
+        <input type="button" id="jwtButton" value="Get JWT" disabled onclick="onGetJWT()">
+    </div>
+    <div class="container">
+        <label>JWT:</label>
+        <input type="text" id="JWT">
+    </div>
+    <div class="container">
+        <label>DATA:</label>
+        <div id="data"></div>
+    </div>
+</body>
+</html>

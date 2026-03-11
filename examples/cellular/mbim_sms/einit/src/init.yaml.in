@@ -1,0 +1,16 @@
+# © 2025 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+- name: mbim_sms.Client
+  env:
+    VFS_FILESYSTEM_BACKEND: client:kl.VfsNet
+    VFS_NETWORK_BACKEND:    client:kl.VfsNet
+@INIT_Client_ENTITY_ENV+@
+  connections:
+  - target: kl.VfsNet
+    id:     kl.VfsNet
+@INIT_Client_ENTITY_CONNECTIONS+@
+
+@INIT_EXTERNAL_ENTITIES@

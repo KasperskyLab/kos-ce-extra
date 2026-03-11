@@ -1,0 +1,12 @@
+[Reader]: Hello from Reader program!
+[Writer]: Hello from Writer program!
+[Reader]: Received sequence: [1]
+[Reader]: Received sequence: [1, 2]
+[Reader]: Received sequence: [1, 2, 3]
+[Reader]: Received sequence: [1, 2, 3, 4]
+[Reader]: Received sequence: [1, 2, 3, 4, 5]
+[Reader]: Received sequence: [1, 2, 3, 4, 5, 6]
+[Reader]: Received sequence: [1, 2, 3, 4, 5, 6, 7]
+[Writer]: Expected behavior: can`t send message to Reader entity!
+[Writer]: Expected behavior: can`t send message to Reader entity!
+[Writer]: Expected behavior: can`t send message to Reader entity!

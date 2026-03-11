@@ -1,0 +1,25 @@
+/**
+ * © 2025 AO Kaspersky Lab
+ * Licensed under the MIT License
+ */
+
+/* Package with the "errors_via_ipc_example.NumberSummation" interface declaration. */
+
+package errors_via_ipc_example.NumberSummation
+
+const UInt32 MaxSecurityGrantedRepeats   = 1;
+
+struct Request
+{
+    UInt32 repeats;
+    UInt32 num1;
+    UInt32 num2;
+}
+
+interface 
+{
+    /* Interface of the LogSequence method. */
+    SumRequest(in Request request,
+               out UInt64 result,
+               error SInt32  status);
+}

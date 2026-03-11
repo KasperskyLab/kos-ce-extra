@@ -1,7 +1,5 @@
-/*
- * © 2025 AO Kaspersky Lab
- * Licensed under the MIT License
- */
+// © 2025 AO Kaspersky Lab
+// Licensed under the MIT License
 
 #include "notification.h"
 
@@ -35,19 +33,15 @@ static nk_err_t Notification_impl(
 Result PublishService()
 {
     NsHandle ns;
-    Result   rc = TO_RESULT(NsCreate(RTL_NULL, INFINITE_TIMEOUT, &ns));
+    Result   rc = TO_RESULT(NsCreate(NULL, INFINITE_TIMEOUT, &ns));
     if (rc != result_code::Ok)
     {
         std::cerr << Tag << ": Failed to create the ns handle\n";
         return rc;
     }
 
-    rc = TO_RESULT(
-        NsPublishService(
-            ns,
-            "client.Notification",
-            "client.Client",
-            "client.Client.notificationImpl"));
+    rc = TO_RESULT(NsPublishService(
+        ns, "client.Notification", "client.Client", "client.Client.notificationImpl"));
     if (rc != result_code::Ok)
     {
         std::cerr << Tag << ": Failed to publish the endpoints on the name server\n";
@@ -65,7 +59,7 @@ Result WaitForNotification()
     NkKosTransport transport;
     Handle         handle;
 
-    Result rc = TO_RESULT(KnCmListen(RTL_NULL, INFINITE_TIMEOUT, client, service));
+    Result rc = TO_RESULT(KnCmListen(NULL, INFINITE_TIMEOUT, client, service));
     if (rc != result_code::Ok)
     {
         std::cerr << Tag << ": Failed to start listen for IPC connections\n";

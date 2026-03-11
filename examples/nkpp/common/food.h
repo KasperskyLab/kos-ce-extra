@@ -1,7 +1,5 @@
-/*
- * © 2025 AO Kaspersky Lab
- * Licensed under the MIT License
- */
+// © 2025 AO Kaspersky Lab
+// Licensed under the MIT License
 
 #pragma once
 
@@ -9,9 +7,12 @@
 #include <array>
 #include <variant>
 
-template<class... Ts>
-struct overloaded : Ts... { using Ts::operator()...; };
-template<class... Ts>
+template <class... Ts>
+struct overloaded: Ts...
+{
+    using Ts::operator()...;
+};
+template <class... Ts>
 overloaded(Ts...) -> overloaded<Ts...>;
 
 namespace food {
@@ -24,6 +25,7 @@ constexpr std::string_view Apple  = "apple";
 constexpr std::string_view Wood   = "wood";
 constexpr std::string_view Stone  = "stone";
 
+// clang-format off
 constexpr std::array<std::string_view, 7> KnownFood = {
     Fish,
     Meat,
@@ -33,5 +35,6 @@ constexpr std::array<std::string_view, 7> KnownFood = {
     Wood,
     Stone
 };
+// clang-format on
 
 } // namespace food
