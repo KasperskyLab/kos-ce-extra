@@ -1,0 +1,13 @@
+© 2026 AO Kaspersky Lab
+This script is licensed under the MIT License
+
+diff --git a/numpy/_core/feature_detection_misc.h b/numpy/_core/feature_detection_misc.h
+index f58cf4b62e..09422001d0 100644
+--- a/numpy/_core/feature_detection_misc.h
++++ b/numpy/_core/feature_detection_misc.h
+@@ -1,4 +1,4 @@
+ #include <stddef.h>
+ 
+-int backtrace(void **, int);
++size_t backtrace(void **, size_t);
+ int madvise(void *, size_t, int);

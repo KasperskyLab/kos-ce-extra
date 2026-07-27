@@ -1,0 +1,6 @@
+# © 2026 AO Kaspersky Lab
+# Licensed under the MIT License
+
+entities:
+
+@INIT_EXTERNAL_ENTITIES@
