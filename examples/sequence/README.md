@@ -1,12 +1,12 @@
 # Using the sequence data type
 This example demonstrates Inter-Process Communication (IPC) in KasperskyOS using a parameter of the
-[sequence data type](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=ice_idl_data_types).
+[sequence data type](https://kas.pr/ohp8).
 It implements a producer-consumer pattern where one application generates sequential data and
 transmits it through a predefined static IPC channel. The receiving application logs each obtained
 sequence to the standard error output.
 
 For additional details on KasperskyOS, including its limitations and known issues, please refer to
-the [KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=community_edition).
+the [KasperskyOS Community Edition Online Help](https://kas.pr/si81).
 
 ## Table of contents
 - [Using the sequence data type](#using-the-sequence-data-type)
@@ -41,14 +41,14 @@ The solution initialization description file named `init.yaml` is generated duri
 build process based on the [`./einit/src/init.yaml.in`](einit/src/init.yaml.in) template.
 The macros in `@INIT_*@`‌ ‌format contained in the template are
 automatically expanded in the resulting `init.yaml` file. For more details, refer to
-[init.yaml.in template](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_yaml_templates).
+[init.yaml.in template](https://kas.pr/nb5m).
 
 ### Security policy description
 
 The [`./einit/src/security.psl`](einit/src/security.psl) file describes the security policy of the
 solution. The declarations in the PSL file are provided with comments that explain the purpose of
 these declarations. For more information about the `security.psl` file, see
-[Describing a security policy for a KasperskyOS-based solution](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=ssp_descr).
+[Describing a security policy for a KasperskyOS-based solution](https://kas.pr/jm1v).
 
 [⬆ Back to Top](#Table-of-contents)
 
@@ -57,17 +57,17 @@ these declarations. For more information about the `security.psl` file, see
 ### Prerequisites
 
 1. Confirm that your host system meets all the
-[System requirements](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=system_requirements)
+[System requirements](https://kas.pr/u87d)
 listed in the KasperskyOS Community Edition Developer's Guide.
-1. [Install](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=sdk_install_and_remove)
+1. [Install](https://kas.pr/ce73)
 the KasperskyOS Community Edition SDK version 1.4. You can download it for free from
-[os.kaspersky.com](https://os.kaspersky.com/development/).
+[os.kaspersky.com](https://kas.pr/4mro).
 1. Copy the source files of this example to your local project directory.
 1. Set up the build environment by sourcing the SDK setup script in your terminal session:
    ```sh
    source /opt/KasperskyOS-Community-Edition-<platform>-<version>/common/set_env.sh
    ```
-1. [Build the necessary drivers](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=building_radxa_drivers)
+1. [Build the necessary drivers](https://kas.pr/ia13)
 from source only if you intend to run this example on Radxa ROCK 3A hardware. This step is not
 required for QEMU or Raspberry Pi 4 B.
 
@@ -126,10 +126,10 @@ You can also use an alternative option to prepare and run the example:
 1. Prepare the required hardware platform and a bootable SD card to run the example by following the
 instructions:
 
-   - [Raspberry Pi 4 B](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_rpi).
-   - [Radxa ROCK 3A](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_radxa).
+   - [Raspberry Pi 4 B](https://kas.pr/i8mg).
+   - [Radxa ROCK 3A](https://kas.pr/21n7).
 1. Run the example by following the instructions in the
-[KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=running_sample_programs_rpi).
+[KasperskyOS Community Edition Online Help](https://kas.pr/9oa7).
 
 [⬆ Back to Top](#Table-of-contents)
 
@@ -154,7 +154,7 @@ following actions will be executed:
 1. The `Reader` program will begin listening for sequence data on the IPC channel.
 1. The `Writer` program will start generating and sending sequences every 3 seconds.
 1. On successful completion of work, programs print messages to standard error output.
-The expected output is contained in the [`./expected_output.txt`](expected_output.txt) file.
+The expected output is contained in the [`./expected_output`](expected_output) file.
 
 [⬆ Back to Top](#Table-of-contents)
 

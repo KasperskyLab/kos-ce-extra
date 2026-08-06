@@ -1,7 +1,7 @@
 # gRPC Hello World example
 
 This solution demonstrates how to integrate the
-[KasperskyOS-adapted version of gRPC® (Google Remote Procedure Call) ](https://github.com/KasperskyLab/grpc-kos)
+[KasperskyOS-adapted version of gRPC® (Google Remote Procedure Call) ](https://kas.pr/qse6)
 into a KasperskyOS-based solution.
 
 To illustrate this integration, the solution provides a practical example — a modified version of
@@ -94,13 +94,13 @@ build process based on the [`./einit/src/client.init.yaml.in`](einit/src/client.
 the [`./einit/src/server.init.yaml.in`](einit/src/server.init.yaml.in) templates. Macros in the
 `@INIT_*@`‌ ‌format contained in the template are automatically expanded in the resulting
 `init.yaml` file. For more details, refer to
-[init.yaml.in template](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_yaml_templates).
+[init.yaml.in template](https://kas.pr/nb5m).
 
 ### Security policy description
 
-The `security.psl` file contains the [solution security policy description](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=ssp_descr)
+The `security.psl` file contains the [solution security policy description](https://kas.pr/jm1v)
 and is generated based on the [`./einit/src/security.psl.in`](einit/src/security.psl.in) template
-during the solution build process. For more details, refer to [security.psl.in template](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_psl_templates).
+during the solution build process. For more details, refer to [security.psl.in template](https://kas.pr/vo4m).
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -109,21 +109,21 @@ during the solution build process. For more details, refer to [security.psl.in t
 ### Prerequisites
 
 1. Confirm that your host system meets all the
-[System requirements](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=system_requirements)
+[System requirements](https://kas.pr/u87d)
 listed in the KasperskyOS Community Edition Developer's Guide.
-1. [Install](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=sdk_install_and_remove)
+1. [Install](https://kas.pr/ce73)
 the KasperskyOS Community Edition SDK version 1.4. You can download it for free from
-[os.kaspersky.com](https://os.kaspersky.com/development/).
+[os.kaspersky.com](https://kas.pr/4mro).
 1. Copy the source files of this example to your local project directory.
 1. Source the SDK setup script to configure the build environment. This exports the `KOSCEDIR`
   environment variable, which points to the SDK installation directory:
    ```sh
    source /opt/KasperskyOS-Community-Edition-<platform>-<version>/common/set_env.sh
    ```
-1. [Build the necessary drivers](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=building_radxa_drivers)
+1. [Build the necessary drivers](https://kas.pr/ia13)
 from source only if you intend to run this example on Radxa ROCK 3A hardware. This step is not
 required for QEMU or Raspberry Pi 4 B.
-1. If not already installed, [build and install](https://github.com/KasperskyLab/grpc-kos) the
+1. If not already installed, [build and install](https://kas.pr/qse6) the
 KasperskyOS-adapted gRPC, as it is a required dependency for this project.
 
 [⬆ Back to Top](#table-of-contents)
@@ -132,7 +132,7 @@ KasperskyOS-adapted gRPC, as it is a required dependency for this project.
 
 The example is built using the CMake build system, which is provided in the
 KasperskyOS Community Edition SDK. When you develop a KasperskyOS-based solution, use the
-[recommended structure of project directories](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_using_sdk_cmake)
+[recommended structure of project directories](https://kas.pr/9zph)
 to simplify the use of CMake scripts.
 
 #### Linux host
@@ -147,7 +147,7 @@ $ cmake --build build/host
 
 > [!NOTE]
 > `CMAKE_PREFIX_PATH` must point to the installation directory of
-> [gRPC for Linux](https://github.com/KasperskyLab/grpc-kos/README.md#build-grpc-for-linux-host-operating-system).
+> [gRPC for Linux](https://kas.pr/qse6#build-grpc-for-linux-host-operating-system).
 > For compatibility with the KasperskyOS adaptation patch, we recommend setting it to
 > `~/.local/share/kos/$(basename $KOSCEDIR)/toolchain`.
 
@@ -199,11 +199,11 @@ where:
 
 > [!NOTE]
 > * `CMAKE_PREFIX_PATH` must point to the installation directory of
->  [gRPC for Linux](https://github.com/KasperskyLab/grpc-kos/README.md#build-grpc-for-linux-host-operating-system).
+>  [gRPC for Linux](https://kas.pr/qse6#build-grpc-for-linux-host-operating-system).
 >  For compatibility with the KasperskyOS adaptation patch, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/toolchain`.
 > * `CMAKE_FIND_ROOT_PATH` must point to the installation directory of
->  [gRPC for KasperskyOS](https://github.com/KasperskyLab/grpc-kos/README.md#build-grpc-for-kasperskyos).
+>  [gRPC for KasperskyOS](https://kas.pr/qse6#build-grpc-for-kasperskyos).
 >  For compatibility, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/sysroot-aarch64-kos`.
 
@@ -238,11 +238,11 @@ where:
 
 > [!NOTE]
 > * `CMAKE_PREFIX_PATH` must point to the installation directory of
->  [gRPC for Linux](https://github.com/KasperskyLab/grpc-kos/README.md#build-grpc-for-linux-host-operating-system).
+>  [gRPC for Linux](https://kas.pr/qse6#build-grpc-for-linux-host-operating-system).
 >  For compatibility with the KasperskyOS adaptation patch, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/toolchain`.
 > * `CMAKE_FIND_ROOT_PATH` must point to the installation directory of
->  [gRPC for KasperskyOS](https://github.com/KasperskyLab/grpc-kos/README.md#build-grpc-for-kasperskyos).
+>  [gRPC for KasperskyOS](https://kas.pr/qse6#build-grpc-for-kasperskyos).
 >  For compatibility, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/sysroot-aarch64-kos`.
 > * For scenarios 1 and 3 (KasperskyOS client), ensure the `targetEndpoint` variable in
@@ -258,8 +258,8 @@ To run the example on hardware after building the `kos-image` target:
 
 1. Prepare the required hardware platform and bootable SD card by following the instructions in the
   KasperskyOS Community Edition Online Help:
-    * [Raspberry Pi 4 B](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_rpi)
-    * [Radxa ROCK 3A](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_radxa)
+    * [Raspberry Pi 4 B](https://kas.pr/i8mg)
+    * [Radxa ROCK 3A](https://kas.pr/21n7)
 1. Copy the `kos-image` to the bootable SD card.
 1. Connect the bootable SD card to the hardware.
 1. Supply power to the hardware and wait for the example to run.

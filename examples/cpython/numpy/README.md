@@ -1,7 +1,7 @@
 # Using the KasperskyOS-adapted CPython to run third-party Python packages
 
 This solution demonstrates how to use external Python packages with the
-[KasperskyOS-adapted version of Python interpreter](https://github.com/KasperskyLab/cpython-kos)
+[KasperskyOS-adapted version of Python interpreter](https://kas.pr/r46m)
 using Numpy as an example.
 
 ## Table of contents
@@ -46,14 +46,14 @@ The solution initialization description file named `init.yaml` is generated duri
 build process based on the [`./einit/src/init.yaml.in`](einit/src/init.yaml.in) template. Macros in
 the `@INIT_*@`‌ ‌format contained in the template are automatically expanded in the resulting
 `init.yaml` file. For more details, refer to
-[init.yaml.in template](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_yaml_templates).
+[init.yaml.in template](https://kas.pr/nb5m).
 
 ### Security policy description
 
 The [`./einit/src/security.psl`](einit/src/security.psl) file describes the security policy of the
 solution. The declarations in the PSL file are provided with comments that explain the purpose of
 these declarations. For more information about the `security.psl` file, see
-[Describing a security policy for a KasperskyOS-based solution](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=ssp_descr).
+[Describing a security policy for a KasperskyOS-based solution](https://kas.pr/jm1v).
 
 [⬆ Back to Top](#table-of-contents)
 
@@ -62,28 +62,28 @@ these declarations. For more information about the `security.psl` file, see
 ### Prerequisites
 
 1. Confirm that your host system meets all the
-[System requirements](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=system_requirements)
+[System requirements](https://kas.pr/u87d)
 listed in the KasperskyOS Community Edition Developer's Guide.
-1. [Install](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=sdk_install_and_remove)
+1. [Install](https://kas.pr/ce73)
 the KasperskyOS Community Edition SDK version 1.4. You can download it for free from
-[os.kaspersky.com](https://os.kaspersky.com/development/).
+[os.kaspersky.com](https://kas.pr/4mro).
 1. Copy the source files of this example to your local project directory.
 1. Source the SDK setup script to configure the build environment. This exports the `KOSCEDIR`
   environment variable, which points to the SDK installation directory:
    ```sh
    source /opt/KasperskyOS-Community-Edition-<platform>-<version>/common/set_env.sh
    ```
-1. [Build the necessary drivers](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=building_radxa_drivers)
+1. [Build the necessary drivers](https://kas.pr/ia13)
 from source only if you intend to run this example on Radxa ROCK 3A hardware. This step is not
 required for QEMU or Raspberry Pi 4 B.
-1. If not already installed, [build and install](https://github.com/KasperskyLab/cpython-kos) the
+1. If not already installed, [build and install](https://kas.pr/r46m) the
 KasperskyOS-adapted Python, as it is a required dependency for this project.
 
 ### Building and running the example
 
 The example is built using the CMake build system, which is provided in the KasperskyOS Community
 Edition SDK. When you develop a KasperskyOS-based solution, use the
-[recommended structure of project directories](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_using_sdk_cmake)
+[recommended structure of project directories](https://kas.pr/9zph)
 to simplify the use of CMake scripts.
 
 #### QEMU
@@ -104,11 +104,11 @@ where:
 
 > [!NOTE]
 > * `CMAKE_SYSTEM_PREFIX_PATH` must point to the installation directory of the
->  [Python for build machine](https://github.com/KasperskyLab/cpython-kos#python-for-build-machine).
+>  [Python for build machine](https://kas.pr/r46m#python-for-build-machine).
 >  For compatibility with the KasperskyOS adaptation patch, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/toolchain`.
 > * `CMAKE_FIND_ROOT_PATH` must point to the installation directory of the
->  [Python for KasperskyOS](https://github.com/KasperskyLab/cpython-kos#building-python-for-kasperskyos).
+>  [Python for KasperskyOS](https://kas.pr/r46m#building-python-for-kasperskyos).
 >  For compatibility, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/sysroot-aarch64-kos`.
 
@@ -133,11 +133,11 @@ where:
 
 > [!NOTE]
 > * `CMAKE_SYSTEM_PREFIX_PATH` must point to the installation directory of the
->  [Python for build machine](https://github.com/KasperskyLab/cpython-kos#python-for-build-machine).
+>  [Python for build machine](https://kas.pr/r46m#python-for-build-machine).
 >  For compatibility with the KasperskyOS adaptation patch, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/toolchain`.
 > * `CMAKE_FIND_ROOT_PATH` must point to the installation directory of the
->  [Python for KasperskyOS](https://github.com/KasperskyLab/cpython-kos#building-python-for-kasperskyos).
+>  [Python for KasperskyOS](https://kas.pr/r46m#building-python-for-kasperskyos).
 >  For compatibility, we recommend setting it to
 >  `~/.local/share/kos/$(basename $KOSCEDIR)/sysroot-aarch64-kos`.
 
@@ -160,10 +160,10 @@ You can also use an alternative option to prepare and run the example:
 1. Prepare the required hardware platform and a bootable SD card to run the example by following the
 instructions:
 
-   - [Raspberry Pi 4 B](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_rpi).
-   - [Radxa ROCK 3A](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_radxa).
+   - [Raspberry Pi 4 B](https://kas.pr/i8mg).
+   - [Radxa ROCK 3A](https://kas.pr/21n7).
 1. Run the example by following the instructions in the
-[KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=running_sample_programs_rpi).
+[KasperskyOS Community Edition Online Help](https://kas.pr/9oa7).
 
 > [!NOTE]
 > If you are building a `kos-image` target for copying to a prepared bootable SD card, ensure that
