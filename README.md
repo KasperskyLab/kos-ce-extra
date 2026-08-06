@@ -3,7 +3,7 @@
 This repository contains C/C++ examples of KasperskyOS-based solutions. These examples are designed
 to help developers understand and implement different KasperskyOS features in their projects.
 For additional details on KasperskyOS, including its limitations and known issues, please refer to the
-[KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=community_edition).
+[KasperskyOS Community Edition Online Help](https://kas.pr/si81).
 
 ## System components and IPC
 

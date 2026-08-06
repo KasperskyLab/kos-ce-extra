@@ -11,7 +11,7 @@ based on the Advanced Message Queuing Protocol (AMQP). This implementation suppo
 0.9.1. For protocol details, see [AMQP Concepts](https://www.rabbitmq.com/tutorials/amqp-concepts).
 
 For additional details on KasperskyOS, including its limitations and known issues, please refer to
-the [KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=community_edition).
+the [KasperskyOS Community Edition Online Help](https://kas.pr/si81).
 
 ## Table of contents
 - [KasperskyOS adaptation of RabbitMQ-C AMQP client library](#kasperskyos-adaptation-of-rabbitmq-c-amqp-client-library)
@@ -27,11 +27,11 @@ the [KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=
 ### Prerequisites
 
 1. Confirm that your host system meets all the
-[System requirements](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=system_requirements)
+[System requirements](https://kas.pr/u87d)
 listed in the KasperskyOS Community Edition Developer's Guide.
-1. [Install](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=sdk_install_and_remove)
+1. [Install](https://kas.pr/ce73)
 the KasperskyOS Community Edition SDK version 1.4. You can download it for free from
-[os.kaspersky.com](https://os.kaspersky.com/development/).
+[os.kaspersky.com](https://kas.pr/4mro).
 1. Source the SDK setup script to configure the build environment. This exports the `KOSCEDIR`
   environment variable, which points to the SDK installation directory:
    ```sh
@@ -48,13 +48,13 @@ the KasperskyOS Community Edition SDK version 1.4. You can download it for free 
 
 The KasperskyOS-adapted RabbitMQ-C library is built using the CMake build system, which is provided
 in the KasperskyOS Community Edition SDK. When you develop a KasperskyOS-based solution, use the
-[recommended structure of project directories](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_using_sdk_cmake)
+[recommended structure of project directories](https://kas.pr/9zph)
 to simplify the use of CMake scripts.
 
 This solution uses the dynamic variant of the KasperskyOS-adapted RabbitMQ-C library. To build a
 static variant of the library, use the `initialize_platform` command with the `FORCE_STATIC`
 parameter in the root `CMakeLists.txt`. For additional details regarding this command, please refer
-to the [platform library](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_platform_lib).
+to the [platform library](https://kas.pr/8r3i).
 
 To build and install both static and dynamic versions of the library, execute the following
 commands:

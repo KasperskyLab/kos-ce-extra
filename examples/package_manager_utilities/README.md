@@ -1,32 +1,32 @@
 # Using the PackageManager component API
 
 This example demonstrates how to work with
-[KPA packages](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=kpa_package)
+[KPA packages](https://kas.pr/u35t)
 in a KasperskyOS-based solution:
 
 * Packing source files into the KPA package using the
-  [`cas-pack`](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=tools_cas_pack)
+  [`cas-pack`](https://kas.pr/jsg9)
   tool.
 * Outputting the KPA package info using the
-  [`cas-inspect`](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=tools_cas_inspect)
+  [`cas-inspect`](https://kas.pr/s7bd)
   tool.
 * Pre-installing the KPA package into a built image of a KasperskyOS-based solution using the
-  [`cas-pm`](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=tools_cas_pm)
+  [`cas-pm`](https://kas.pr/oq1c)
   tool.
 * Getting data on a
-  [KPA package manifest](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=kpa_manifest)
+  [KPA package manifest](https://kas.pr/23ce)
   using the
-  [PackageManager](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=packmgr_component)
+  [PackageManager](https://kas.pr/jb2w)
   component.
 * Starting a process from an executable file installed from the KPA package using the
-  [ExecutionManager](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=execmgr_component)
+  [ExecutionManager](https://kas.pr/je9d)
   component.
 
 How to work with the ExecutionManager component, see the
 [`execution_manager_separated_vfs example`](../execution_manager_separated_vfs/README.md).
 
 For additional details on KasperskyOS, including its limitations and known issues, please refer to
-the [KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=community_edition).
+the [KasperskyOS Community Edition Online Help](https://kas.pr/si81).
 
 # Table of contents
 - [Using the PackageManager component API](#using-the-packagemanager-component-api)
@@ -79,14 +79,14 @@ The solution initialization description file named `init.yaml` is generated duri
 build process based on the [`./einit/src/init.yaml.in`](einit/src/init.yaml.in) template.
 The macros in `@INIT_*@`‌ ‌format contained in the template are
 automatically expanded in the resulting `init.yaml` file. For more details, refer to
-[init.yaml.in template](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_yaml_templates).
+[init.yaml.in template](https://kas.pr/nb5m).
 
 ### Security policy description
 
 The [`./einit/src/security.psl`](einit/src/security.psl) file describes the security policy of the
 solution. The declarations in the PSL file are provided with comments that explain the purpose of
 these declarations. For more information about the `security.psl` file, see
-[Describing a security policy for a KasperskyOS-based solution](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=ssp_descr).
+[Describing a security policy for a KasperskyOS-based solution](https://kas.pr/jm1v).
 
 [⬆ Back to Top](#Table-of-contents)
 
@@ -95,17 +95,17 @@ these declarations. For more information about the `security.psl` file, see
 ### Prerequisites
 
 1. Confirm that your host system meets all the
-[System requirements](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=system_requirements)
+[System requirements](https://kas.pr/u87d)
 listed in the KasperskyOS Community Edition Developer's Guide.
-1. [Install](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=sdk_install_and_remove)
+1. [Install](https://kas.pr/ce73)
 the KasperskyOS Community Edition SDK version 1.4. You can download it for free from
-[os.kaspersky.com](https://os.kaspersky.com/development/).
+[os.kaspersky.com](https://kas.pr/4mro).
 1. Copy the source files of this example to your local project directory.
 1. Set up the build environment by sourcing the SDK setup script in your terminal session:
    ```sh
    source /opt/KasperskyOS-Community-Edition-<platform>-<version>/common/set_env.sh
    ```
-1. [Build the necessary drivers](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=building_radxa_drivers)
+1. [Build the necessary drivers](https://kas.pr/ia13)
 from source only if you intend to run this example on Radxa ROCK 3A hardware. This step is not
 required for QEMU or Raspberry Pi 4 B.
 
@@ -164,17 +164,17 @@ You can also use an alternative option to prepare and run the example:
 1. Prepare the required hardware platform and a bootable SD card to run the example by following the
 instructions:
 
-   - [Raspberry Pi 4 B](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_rpi).
-   - [Radxa ROCK 3A](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=preparing_sd_card_radxa).
+   - [Raspberry Pi 4 B](https://kas.pr/i8mg).
+   - [Radxa ROCK 3A](https://kas.pr/21n7).
 1. Run the example by following the instructions in the
-[KasperskyOS Community Edition Online Help](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=running_sample_programs_rpi).
+[KasperskyOS Community Edition Online Help](https://kas.pr/9oa7).
 
 [⬆ Back to Top](#Table-of-contents)
 
 #### CMake input files
 
 When you develop a KasperskyOS-based solution, use the
-[recommended structure of project directories](https://click.kaspersky.com/?hl=en-us&link=online_help&pid=kos&version=1.4&customization=KCE&helpid=cmake_using_sdk_cmake)
+[recommended structure of project directories](https://kas.pr/9zph)
 to simplify the use of CMake scripts.
 
 [`./application/CMakeLists.txt`](application/CMakeLists.txt)—CMake commands for
@@ -209,7 +209,7 @@ following actions will be executed:
 1. The `Application` program reads the content of a text resource file and outputs them to standard
 error output.
 1. On successful completion of work, programs print messages to standard error output. The expected
-output is contained in the [`./expected_output.txt`](expected_output.txt) file.
+output is contained in the [`./expected_output`](expected_output) file.
 
 [⬆ Back to Top](#Table-of-contents)
 
